@@ -1,0 +1,76 @@
+spring:
+  cloud:
+    function:
+      definition: orderInvoice;fraudReview;orderAnalytics
+    stream:
+      bindings:
+        orderInvoice-in-0:
+          destination: orders.invoice.input
+          content-type: application/json
+          group: realtime-etl-order-invoice
+          consumer:
+            max-attempts: 3
+            back-off-initial-interval: 500
+            back-off-max-interval: 5000
+        orderInvoice-out-0:
+          destination: invoices.output
+          content-type: application/json
+        fraudReview-in-0:
+          destination: orders.fraud.input
+          content-type: application/json
+          group: realtime-etl-fraud-review
+          consumer:
+            max-attempts: 3
+            back-off-initial-interval: 500
+            back-off-max-interval: 5000
+        fraudReview-out-0:
+          destination: fraud-reviews.output
+          content-type: application/json
+        orderAnalytics-in-0:
+          destination: orders.analytics.input
+          content-type: application/json
+          group: realtime-etl-order-analytics
+          consumer:
+            max-attempts: 3
+            back-off-initial-interval: 500
+            back-off-max-interval: 5000
+        orderAnalytics-out-0:
+          destination: order-analytics.output
+          content-type: application/json
+        etlFailures-out-0:
+          destination: etl.failures
+          content-type: application/json
+
+realtime-etl:
+  invoice:
+    invoice-id-prefix: INV-
+    status: READY
+  fraud-risk:
+    base-score: 15
+    high-amount-threshold: 500.00
+    high-amount-score: 45
+    domestic-currency: MYR
+    foreign-currency-score: 20
+    manual-review-threshold: 60
+  analytics-band:
+    medium-threshold: 100.00
+    large-threshold: 500.00
+
+management:
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-components: always
+      show-details: always
+      group:
+        readiness:
+          include: readinessState,etlRoutes
