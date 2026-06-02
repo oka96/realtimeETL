@@ -1,0 +1,16 @@
+{
+  "routeName": "orderInvoice",
+  "nodeName": "validateOrder",
+  "traceId": "invoice-invalid-trace-1",
+  "failureTimestamp": 1780127000500,
+  "inputPayloadType": "com.example.realtimeetl.order.OrderCreated",
+  "sourceMessageId": "source-message-123",
+  "sourceMessageTimestamp": 1780127000000,
+  "completedNodeCount": 1,
+  "nodeDurationsNanos": {
+    "requireOrderContract": 12000,
+    "validateOrder": 180000
+  },
+  "errorType": "java.lang.IllegalArgumentException",
+  "errorMessage": "Order id is required"
+}

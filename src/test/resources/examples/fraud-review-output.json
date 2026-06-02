@@ -1,0 +1,8 @@
+{
+  "reviewId": "FR-O-9001",
+  "orderId": "O-9001",
+  "customerId": "C-44",
+  "amount": 750.00,
+  "riskScore": 80,
+  "decision": "MANUAL_REVIEW"
+}

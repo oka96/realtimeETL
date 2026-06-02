@@ -1,0 +1,8 @@
+{
+  "reviewId": "FR-O-1002",
+  "orderId": "O-1002",
+  "customerId": "C-45",
+  "amount": 25.00,
+  "riskScore": 15,
+  "decision": "AUTO_APPROVE"
+}

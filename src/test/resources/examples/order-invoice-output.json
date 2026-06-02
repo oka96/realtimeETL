@@ -1,0 +1,8 @@
+{
+  "invoiceId": "INV-O-1001",
+  "orderId": "O-1001",
+  "customerId": "C-9",
+  "amount": 125.50,
+  "currency": "MYR",
+  "status": "READY"
+}
